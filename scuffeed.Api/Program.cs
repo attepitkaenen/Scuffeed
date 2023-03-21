@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<PostContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("PostContext") ?? throw new InvalidOperationException("Connection string 'PostContext' not found.")));
+    options.UseSqlServer(builder.Configuration["DBKeyName"] ?? throw new InvalidOperationException("Connection string 'PostContext' not found.")));
 
 // Add services to the container.
 
@@ -23,7 +23,6 @@ app.UseSwaggerUI();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-
     app.UseCors(cors =>
     {
         cors
@@ -40,3 +39,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
