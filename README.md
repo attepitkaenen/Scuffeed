@@ -1,2 +1,2 @@
-# Scuffeed
-A start for a social media feed
+# ScuffeedBackend
+A start for a social media feed backend

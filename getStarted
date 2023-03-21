@@ -1,0 +1,25 @@
+----------------backend---------------------
+dotnet new sln -n scuffeed
+dotnet new webapi -n scuffeed.Api
+dotnet new xunit -n scuffeed.Tests
+dotnet add scuffeed.Tests reference scuffeed.Api
+dotnet sln add scuffeed.Api
+dotnet sln add scuffeed.Tests
+dotnet build
+
+"Server=localhost,1433;Database=PostsDb;User Id=sa;Password=SuperSecurePasswordTrustMe;TrustServerCertificate=True;Trusted_Connection=False;MultipleActiveResultSets=true"
+
+
+----boilerplate----
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+
+dotnet aspnet-codegenerator controller -name PostsController -m Post -dc PostContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries -api
+
+
+---------------frontend----------------------
+
+https://www.youtube.com/watch?v=__mSgDEOyv8
+npx create-next-app@latest --ts scuffeed.Frontend (remember to say yes to the app beta thingy jingy)
