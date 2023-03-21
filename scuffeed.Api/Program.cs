@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<PostContext>(options =>
-    options.UseSqlServer(builder.Configuration["DBKeyName"] ?? throw new InvalidOperationException("Connection string 'PostContext' not found.")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DBKeyName") ?? throw new InvalidOperationException("Connection string 'PostContext' not found.")));
 
 // Add services to the container.
 
